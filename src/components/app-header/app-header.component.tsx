@@ -23,7 +23,7 @@ const AppHeader: React.FC<Props> = (props: Props) => {
           ? (
             <span>
               <small>Selected Tag: {props.filter}</small>
-              <small className="Clear-filter dimmed" onClick={props.onFilterClear}> [clear] </small>
+              <small className="Clear-filter dimmed" onClick={props.onFilterClear}> [ clear ] </small>
             </span>
           )
           : (

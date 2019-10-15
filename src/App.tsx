@@ -5,8 +5,8 @@ import { AppHeader } from './components/app-header/app-header.component';
 import { NotesList } from './components/notes-list/notes-list.component';
 import { NotesAdd } from './components/notes-add/notes-add.component';
 
-import { addNote, filterClear } from './redux/actions';
-import { State, Note, AddNoteAction, FilterClearAction } from './redux/interfaces';
+import { addNote, filterNotes, filterClear } from './redux/actions';
+import { State, Note, AddNoteAction, FilterNotesAction, FilterClearAction } from './redux/interfaces';
 
 import './App.css';
 
@@ -14,13 +14,15 @@ interface AppProps {
   notes: Note[];
   filter: string | null;
   onAddNote: (text: string) => AddNoteAction;
+  onFilterNotes: (text: string) => FilterNotesAction;
   onClearFilter: () => FilterClearAction;
 }
 
 const App: React.FC<AppProps> = (props: AppProps) => {
+  const sortedNotes = props.notes.sort((a, b) => (a.id < b.id) ? 1 : -1);
   const notes = !props.filter
-    ? props.notes
-    : props.notes.filter(note => {
+    ? sortedNotes
+    : sortedNotes.filter(note => {
       return note.tags.includes(props.filter || '');
     });
 
@@ -35,7 +37,7 @@ const App: React.FC<AppProps> = (props: AppProps) => {
       
       <NotesAdd onNoteSubmit={props.onAddNote} />
       
-      <NotesList notes={notes} />
+      <NotesList notes={notes} onTagClicked={props.onFilterNotes} />
     </section>
   );
 }
@@ -43,7 +45,8 @@ const App: React.FC<AppProps> = (props: AppProps) => {
 const mapStateToProps = (state: State) => ({ ...state });
 const mapDispatchToProps = {
   onAddNote: addNote,
-  onClearFilter: filterClear
+  onClearFilter: filterClear,
+  onFilterNotes: filterNotes
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

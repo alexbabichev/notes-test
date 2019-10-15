@@ -21,7 +21,7 @@ const NotesAdd: React.FC<Props> = (props: Props) => {
 
   return (
     <form onSubmit={handleSubmit} className="Notes-add-form">
-      <input type="text" name="text" />
+      <input type="text" name="text" placeholder="Note text" />
       <button type="reset">×</button>
       <p className="dimmed">
         <small>Use [enter] to submit note</small>

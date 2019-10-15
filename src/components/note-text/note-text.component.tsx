@@ -1,25 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import { filterNotes } from '../../redux/actions';
-import { FilterNotesAction } from '../../redux/interfaces';
-
 
 interface Props {
   text: string,
-  onFilterNotes: (text: string) => FilterNotesAction;
-  onTagClicked: (tag: string | null) => void;
+  onTagClicked: (tag: string) => void;
 }
 
-const NoteTextFC: React.FC<Props> = (props: Props) => {
-  const { text, onFilterNotes } = props;
-
+const NoteText: React.FC<Props> = (props: Props) => {
   const regex = /(^|\s)(#[a-z\d-]+)/ig;
-  const parts = text.split(regex);
+  const parts = props.text.split(regex);
 
   const handleTagClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     const tag = event.currentTarget.textContent;
-    tag && onFilterNotes(tag);
+    tag && props.onTagClicked(tag);
   }
 
   return (
@@ -33,10 +25,4 @@ const NoteTextFC: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapDispatchToProps = {
-  onFilterNotes: filterNotes
-}
-
-// const NoteText = { NoteText: connect(null, mapDispatchToProps)(NoteTextFC) }
-
-export default connect(null, mapDispatchToProps)(NoteTextFC);
+export { NoteText };

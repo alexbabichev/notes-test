@@ -6,18 +6,18 @@ export const initialState: State = {
     text: 'test',
     tags: []
   }, {
-      id: 1,
-      text: 'test1 #tag, #tag2',
-      tags: ['#tag', '#tag2']
-    }],
+    id: 1,
+    text: 'test1 #tag, #tag2',
+    tags: ['#tag', '#tag2']
+  }],
   filter: null
 }
 
 export function reducer(state: State = initialState, action: Action) {
-  switch(action.type) {
+  switch (action.type) {
     case ActionsTypes.ADD_NOTE: {
       const note = action.payload;
-      return { ...state,  notes: [...state.notes, note] }
+      return { ...state, notes: [...state.notes, note] }
     }
 
     case ActionsTypes.FILTER_NOTES: {
@@ -29,7 +29,7 @@ export function reducer(state: State = initialState, action: Action) {
       return { ...state, filter: null }
     }
 
-    default: 
+    default:
       return state
   }
 }
