@@ -11,5 +11,9 @@
 }
 
 .Clear-filter {
+  color: red;
   cursor: pointer;
-}
+ }
+ .Clear-filter:hover {
+   opacity: 1;
+ }

@@ -18,16 +18,17 @@ const AppHeader: React.FC<Props> = (props: Props) => {
         <span>Viewed Notes: {props.filteredNotesLenght} of {props.allNotesLength}</span>
       </p>
       
-      <p className="dimmed">
+      <p >
         {!!props.filter
           ? (
             <span>
-              <small>Selected Tag: {props.filter}</small>
-              <small className="Clear-filter dimmed" onClick={props.onFilterClear}> [ clear ] </small>
+              <small className="dimmed">Selected Tag: </small> 
+              <small>{props.filter}</small>
+              <small className="Clear-filter dimmed" onClick={props.onFilterClear}> [clear] </small>
             </span>
           )
           : (
-            <small>No selected tags</small>
+            <small className="dimmed">No selected tags</small>
           )}
       </p>
     </header>
