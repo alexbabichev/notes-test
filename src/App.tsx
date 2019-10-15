@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
+import { connect } from 'react-redux'
+
+import { NotesList } from './components/notes-list/notes-list.component';
+
+import { State, Note } from './redux/interfaces';
+
 import './App.css';
 
-const App: React.FC = () => {
+interface AppProps {
+  notes: Note[]
+}
+
+const mapStateToProps = (state: State) => ({
+  notes: state.notes,
+  filter: state.filter
+});
+
+const App: React.FC<AppProps> = (props: AppProps) => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Notes</h1>
+        <NotesList notes={props.notes} />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
