@@ -1,0 +1,18 @@
+.Notes-list {
+  display: grid;
+  row-gap: 1vw;
+
+  list-style: none;
+
+  width: 30vw;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.Notes-list li {
+  padding: 0 1vw;
+  border: 1px solid silver;
+  border-radius: 3px;
+
+  text-align: left;
+}

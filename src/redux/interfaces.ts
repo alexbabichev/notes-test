@@ -17,16 +17,16 @@ export interface AddNoteAction {
   payload: Note
 }
 
-export interface FilterNotes {
+export interface FilterNotesAction {
   type: ActionsTypes.FILTER_NOTES,
   payload: string
 }
 
-export interface FilterClear {
+export interface FilterClearAction {
   type: ActionsTypes.FILTER_CLEAR
 }
 
-export type Action = AddNoteAction | FilterNotes | FilterClear;
+export type Action = AddNoteAction | FilterNotesAction | FilterClearAction;
 
 // State
 

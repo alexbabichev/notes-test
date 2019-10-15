@@ -1,0 +1,24 @@
+.Notes-add-form {
+  width: 30vw;
+  margin: 2vw auto;
+
+  position: relative;
+}
+
+.Notes-add-form button {
+  position: absolute;
+  right: 8px;
+  top: 5px;
+
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  outline: none !important;
+
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.Notes-add-form button:hover {
+  opacity: 1;
+}

@@ -1,0 +1,15 @@
+.Note-tags-wrapper {
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+.Note-tags {
+  display: inline-grid;
+  grid-auto-flow: column;
+  column-gap: 0.3vw;
+}
+
+.Note-tag-header {
+  display: inline-block;
+  margin-right: 0.3vw;
+}

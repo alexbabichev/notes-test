@@ -5,7 +5,11 @@ export const initialState: State = {
     id: 0,
     text: 'test',
     tags: []
-  }],
+  }, {
+      id: 1,
+      text: 'test1 #tag, #tag2',
+      tags: ['#tag', '#tag2']
+    }],
   filter: null
 }
 

@@ -1,23 +1,33 @@
 import React from 'react';
+
+import NoteText from '../note-text/note-text.component';
+import { NoteTags } from '../note.tags/note-tags.component';
+
 import { Note } from '../../redux/interfaces';
+
+import './notes-list.css';
 
 interface Props {
   notes: Note[],
-  onTodoClicked?: (todoId: number) => void
+  onTagClicked?: (noteId: number) => void;
 }
-interface State { }
 
 const NotesList: React.FC<Props> = (props: Props) => {
   const { notes } = props;
-  console.log(props);
+
+  const onTagClicked = (tag: string | null) => {
+    console.log(tag);
+  }
+
   return (
-    <div>
-      <ul>
-        {notes.map((note: Note) => (
-          <li key={note.text}>{note.text}</li>
-        ))}
-      </ul>
-    </div>
+    <ul className="Notes-list">
+      {notes.map((note: Note) => (
+        <li key={note.text}>
+          <NoteText text={note.text} onTagClicked={onTagClicked} />
+          <NoteTags tags={note.tags} />
+        </li>
+      ))}
+    </ul>
   );
 }
 

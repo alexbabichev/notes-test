@@ -7,7 +7,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body * {
+  box-sizing: border-box;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px 15px;
+
+  border: 1px solid silver;
+  border-radius: 3px;
+
+  font-size: 1em;
+  outline: none !important;
+}
+input[type="text"]:focus {
+  border-color: gray; 
+}
+
+.dimmed {
+  opacity: 0.5;
+}
+
+.disable-select {
+  user-select: none;
 }
